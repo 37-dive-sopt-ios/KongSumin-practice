@@ -1,15 +1,13 @@
 //
-//  LoginViewController.swift
+//  LoginViewController_Closure.swift
 //  sopt-37th-01Seminar
 //
-//  Created by sumin Kong on 10/11/25.
+//  Created by sumin Kong on 10/18/25.
 //
 
 import UIKit
-import SnapKit
 
-
-class LoginViewController: UIViewController {
+class LoginViewController_Closure: UIViewController {
     
     // MARK: - Properties
 
@@ -23,8 +21,7 @@ class LoginViewController: UIViewController {
     // MARK: - UI Components
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        //UILabel(frame: CGRect(x: 20, y: 120, width: self.view.bounds.width - 40, height: 50))
+        let label = UILabel(frame: CGRect(x: 20, y: 120, width: self.view.bounds.width - 40, height: 50))
         label.text = "동네라서 가능한 모든 것\n당근에서 가까운 이웃과 함께해요."
         label.font = UIFont(name: "pretendard-Bold", size: 18)
         label.numberOfLines = 2
@@ -33,11 +30,11 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var idTextField: UITextField = {
-        let textField = UITextField()
-        //UITextField(frame: CGRect(x: 20, y: 220, width: self.view.bounds.width - 40, height: 45))
+        let textField = UITextField(frame: CGRect(x: 20, y: 220, width: self.view.bounds.width - 40, height: 45))
         textField.placeholder = "아이디"
         textField.borderStyle = .none // 기본 borderStyle 제거
         textField.backgroundColor = .grey200
+//        UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)  연한 회색 배경
         textField.layer.cornerRadius = 3
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor // 더 연한 테두리
@@ -50,8 +47,7 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        //UITextField(frame: CGRect(x: 20, y: 275, width: self.view.bounds.width - 40, height: 45))
+        let textField = UITextField(frame: CGRect(x: 20, y: 275, width: self.view.bounds.width - 40, height: 45))
         textField.placeholder = "비밀번호"
         textField.borderStyle = .none // 기본 borderStyle 제거
         textField.isSecureTextEntry = true
@@ -69,8 +65,7 @@ class LoginViewController: UIViewController {
     
    
     lazy var loginButton: UIButton = {
-        let button = UIButton()
-        //UIButton(frame: CGRect(x: 20, y: 340, width: self.view.bounds.width - 40, height: 50))
+        let button = UIButton(frame: CGRect(x: 20, y: 340, width: self.view.bounds.width - 40, height: 50))
         button.setTitle("로그인하기", for: .normal)
         button.backgroundColor = UIColor(named: "primary_orange")
         button.setTitleColor(.white, for: .normal)
@@ -80,8 +75,7 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var switchLabel: UILabel = {
-        let label = UILabel()
-        //UILabel(frame: CGRect(x: 20, y: 390, width: self.view.bounds.width - 40, height: 50))
+        let label = UILabel(frame: CGRect(x: 20, y: 390, width: self.view.bounds.width - 40, height: 50))
         label.text = "Switch"
         label.font = UIFont(name: "pretendard-Regular", size: 10)
         label.numberOfLines = 2
@@ -96,65 +90,19 @@ class LoginViewController: UIViewController {
         return loginSwitch
     }()
     
-    
+    private func handleCompletion(message: String) {
+        titleLabel.text = message
+        idTextField.text = ""
+        passwordTextField.text = ""
+        loginButton.setTitle("다시 로그인하기", for: .normal)
+    }
     
     @objc
     private func loginButtonDidTap(){
 //        presentToWelcomeVC()
       pushToWelcomeVC()
     }
-    private func setLayOut(){
-        [titleLabel, idTextField,passwordTextField, loginButton].forEach {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview($0)
-        }
-        
-//        NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 163)])
-//        
-//        NSLayoutConstraint.activate([idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     idTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 72),
-//                                     idTextField.widthAnchor.constraint(equalToConstant: 335),
-//                                     idTextField.heightAnchor.constraint(equalToConstant: 52)])
-//        
-//        NSLayoutConstraint.activate([passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     passwordTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 130),
-//                                     passwordTextField.widthAnchor.constraint(equalToConstant: 335),
-//                                     passwordTextField.heightAnchor.constraint(equalToConstant: 52)])
-//
-//        NSLayoutConstraint.activate([loginButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 217),
-//                                     loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//                                     loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//                                     loginButton.heightAnchor.constraint(equalToConstant: 58)])
-        
-        titleLabel.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(163)
-        }
-        
-        idTextField.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(72)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(52)
-        }
-        passwordTextField.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(130)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(52)
-        }
-        loginButton.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(217)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(58)
-        }
-        
-    }
+    
     
     private func presentToWelcomeVC(){
         let welcomeViewController = WelcomeViewController()
@@ -166,9 +114,16 @@ class LoginViewController: UIViewController {
     }
     
     private func pushToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Closure()
         welcomeViewController.id = idTextField.text
 //        welcomeViewController.setLabelText(id: idTextField.text)
+        
+        
+        // completionHandler 정의하기!
+        welcomeViewController.completionHandler = { [weak self] message in
+            self?.handleCompletion(message: message)
+        }
+        
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
     
@@ -182,7 +137,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayOut()
+        
         setUI()
         setHierarchy()
     }
@@ -196,11 +151,11 @@ class LoginViewController: UIViewController {
     private func setHierarchy() {
         let components = [
             titleLabel,
-//            idTextField,
-//            passwordTextField,
+            idTextField,
+            passwordTextField,
             loginButton,
-//            switchLabel,
-//            loginSwitch
+            switchLabel,
+            loginSwitch
         ]
         
         components.forEach { view.addSubview($0) }

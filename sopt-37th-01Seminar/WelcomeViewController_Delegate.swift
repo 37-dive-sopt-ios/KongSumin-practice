@@ -1,16 +1,25 @@
 //
-//  WelcomeViewController.swift
+//  WelcomeViewController_Delegate.swift
 //  sopt-37th-01Seminar
 //
-//  Created by sumin Kong on 10/11/25.
+//  Created by sumin Kong on 10/18/25.
 //
 
 import Foundation
 import UIKit
 
-final class WelcomeViewController: UIViewController {
+
+protocol WelcomeReloginDelegate: AnyObject {//AnyObject 안 붙이면 오류 뜰 수 있음.
+    func retryLogin(didTapReloginWith message: String)
+}
+
+
+final class WelcomeViewController_Delegate: UIViewController {
     
     var id: String?
+    
+    weak var delegate: WelcomeReloginDelegate?//선언만 해두고 있을수도있고 없을 수도 있음.
+    
     
     private let logoImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 112, y: 87, width: 150, height: 150))
@@ -19,8 +28,7 @@ final class WelcomeViewController: UIViewController {
     }()
     
     private let welcomeLabel: UILabel = {
-        let label = UILabel()
-        //UILabel(frame: CGRect(x: 140, y: 295, width: 95, height: 60))
+        let label = UILabel(frame: CGRect(x: 140, y: 295, width: 95, height: 60))
         label.text = "???님 \n반가워요!"
         label.font = UIFont(name: "Pretendard-ExtraBold", size: 25)
         label.textAlignment = .center
@@ -64,6 +72,10 @@ final class WelcomeViewController: UIViewController {
     
     @objc
     private func backButtonDidTap(){
+        delegate?.retryLogin(didTapReloginWith: "다시 로그인 버튼 클릭!")//옵셔널 체이닝 - 있으면 실행, 없으면 안 함
+        
+        
+        
         if self.navigationController == nil{
             self.dismiss(animated: true)
         }else{
@@ -84,15 +96,6 @@ final class WelcomeViewController: UIViewController {
         [logoImageView, welcomeLabel, goHomeButton, backToLoginButton].forEach {
 //            $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
-            
-            
         }
-//        
-//        NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 163)]
-//        NSLayoutConstraint.activate([loginButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 217),
-//                                     loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//                                     loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//                                     loginButton.heightAnchor.constraint(equalToConstant: 58)])
     }
 }
