@@ -10,74 +10,10 @@ import SnapKit
 
 
 class LoginViewController: UIViewController {
-    
-    // MARK: - Properties
-
-    // 배달의민족 주조색 (하늘색 계열)
-    let baeminSkyBlue = UIColor(red: 35/255, green: 200/255, blue: 195/255, alpha: 1.0)
-    // 텍스트 필드 배경색 (약간 연한 회색)
-    let textFieldBackgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
-    // 텍스트 필드 테두리 색상 (더 연한 회색)
-    let textFieldBorderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
-    
-    // MARK: - UI Components
-    
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        //UILabel(frame: CGRect(x: 20, y: 120, width: self.view.bounds.width - 40, height: 50))
-        label.text = "동네라서 가능한 모든 것\n당근에서 가까운 이웃과 함께해요."
-        label.font = UIFont(name: "pretendard-Bold", size: 18)
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        return label
-    }()
-    
-    lazy var idTextField: UITextField = {
-        let textField = UITextField()
-        //UITextField(frame: CGRect(x: 20, y: 220, width: self.view.bounds.width - 40, height: 45))
-        textField.placeholder = "아이디"
-        textField.borderStyle = .none // 기본 borderStyle 제거
-        textField.backgroundColor = .grey200
-        textField.layer.cornerRadius = 3
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor // 더 연한 테두리
-        // 텍스트 필드 좌우 패딩 추가
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
-        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.rightViewMode = .always
-        return textField
-    }()
-    
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        //UITextField(frame: CGRect(x: 20, y: 275, width: self.view.bounds.width - 40, height: 45))
-        textField.placeholder = "비밀번호"
-        textField.borderStyle = .none // 기본 borderStyle 제거
-        textField.isSecureTextEntry = true
-        textField.backgroundColor = .grey200
-        textField.layer.cornerRadius = 3
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor // 더 연한 테두리
-        // 텍스트 필드 좌우 패딩 추가
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
-        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.rightViewMode = .always
-        return textField
-    }()
-    
-   
-    lazy var loginButton: UIButton = {
-        let button = UIButton()
-        //UIButton(frame: CGRect(x: 20, y: 340, width: self.view.bounds.width - 40, height: 50))
-        button.setTitle("로그인하기", for: .normal)
-        button.backgroundColor = UIColor(named: "primary_orange")
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 6
-        button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
-        return button
-    }()
+    private let rootView = LoginView()
+    public override func loadView() {
+        self.view = rootView
+    }
     
     lazy var switchLabel: UILabel = {
         let label = UILabel()
@@ -103,63 +39,12 @@ class LoginViewController: UIViewController {
 //        presentToWelcomeVC()
       pushToWelcomeVC()
     }
-    private func setLayOut(){
-        [titleLabel, idTextField,passwordTextField, loginButton].forEach {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview($0)
-        }
-        
-//        NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 163)])
-//        
-//        NSLayoutConstraint.activate([idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     idTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 72),
-//                                     idTextField.widthAnchor.constraint(equalToConstant: 335),
-//                                     idTextField.heightAnchor.constraint(equalToConstant: 52)])
-//        
-//        NSLayoutConstraint.activate([passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                                     passwordTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 130),
-//                                     passwordTextField.widthAnchor.constraint(equalToConstant: 335),
-//                                     passwordTextField.heightAnchor.constraint(equalToConstant: 52)])
-//
-//        NSLayoutConstraint.activate([loginButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 217),
-//                                     loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//                                     loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//                                     loginButton.heightAnchor.constraint(equalToConstant: 58)])
-        
-        titleLabel.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(163)
-        }
-        
-        idTextField.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(72)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(52)
-        }
-        passwordTextField.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(130)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(52)
-        }
-        loginButton.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom).offset(217)
-            $0.leading.equalToSuperview().offset(20)
-                        $0.trailing.equalToSuperview().offset(-20)
-                        $0.height.equalTo(58)
-        }
-        
-    }
+    
     
     private func presentToWelcomeVC(){
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .formSheet
-        welcomeViewController.id = idTextField.text
+        welcomeViewController.id = rootView.idTextField.text
 //        welcomeViewController.setLabelText(id: idTextField.text)
         self.present(welcomeViewController, animated: true)
         
@@ -167,7 +52,7 @@ class LoginViewController: UIViewController {
     
     private func pushToWelcomeVC() {
         let welcomeViewController = WelcomeViewController()
-        welcomeViewController.id = idTextField.text
+        welcomeViewController.id = rootView.idTextField.text
 //        welcomeViewController.setLabelText(id: idTextField.text)
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
@@ -182,7 +67,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayOut()
+        rootView.setLayOut()
         setUI()
         setHierarchy()
     }
@@ -195,10 +80,10 @@ class LoginViewController: UIViewController {
     
     private func setHierarchy() {
         let components = [
-            titleLabel,
+            rootView.titleLabel,
 //            idTextField,
 //            passwordTextField,
-            loginButton,
+            rootView.loginButton,
 //            switchLabel,
 //            loginSwitch
         ]
@@ -206,4 +91,7 @@ class LoginViewController: UIViewController {
         components.forEach { view.addSubview($0) }
     }
     
+}
+#Preview {
+    LoginViewController()
 }
