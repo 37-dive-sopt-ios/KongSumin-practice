@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D59739D2EBF2101006D3497 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D59739C2EBF2101006D3497 /* Config.xcconfig */; };
 		8DACEAA52EA3857C00183B17 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8DACEAA42EA3857C00183B17 /* SnapKit */; };
+		8DD61D9E2EC7232500466833 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 8DD61D9D2EC7232500466833 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D59739C2EBF2101006D3497 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		8D8C909B2E9A22CB0028938A /* sopt-37th-01Seminar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sopt-37th-01Seminar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -41,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DACEAA52EA3857C00183B17 /* SnapKit in Frameworks */,
+				8DD61D9E2EC7232500466833 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +54,7 @@
 		8D8C90922E9A22CB0028938A = {
 			isa = PBXGroup;
 			children = (
+				8D59739C2EBF2101006D3497 /* Config.xcconfig */,
 				8D8C909D2E9A22CB0028938A /* sopt-37th-01Seminar */,
 				8D8C909C2E9A22CB0028938A /* Products */,
 			);
@@ -84,6 +89,7 @@
 			name = "sopt-37th-01Seminar";
 			packageProductDependencies = (
 				8DACEAA42EA3857C00183B17 /* SnapKit */,
+				8DD61D9D2EC7232500466833 /* Then */,
 			);
 			productName = "sopt-37th-01Seminar";
 			productReference = 8D8C909B2E9A22CB0028938A /* sopt-37th-01Seminar.app */;
@@ -115,6 +121,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				8DACEAA32EA3857C00183B17 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8DD61D9C2EC7232500466833 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8D8C909C2E9A22CB0028938A /* Products */;
@@ -131,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D59739D2EBF2101006D3497 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +217,7 @@
 		};
 		8D8C90B12E9A22CC0028938A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D59739C2EBF2101006D3497 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -272,6 +281,7 @@
 		};
 		8D8C90B22E9A22CC0028938A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D59739C2EBF2101006D3497 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -358,6 +368,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		8DD61D9C2EC7232500466833 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -365,6 +383,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8DACEAA32EA3857C00183B17 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8DD61D9D2EC7232500466833 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DD61D9C2EC7232500466833 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
