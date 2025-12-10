@@ -16,6 +16,11 @@
 			path = SwiftUi_Tutorial;
 			sourceTree = "<group>";
 		};
+		8D8A0ACA2EDAC728002154CC /* week7 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = week7;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		8D3B10F22ED172B3009357A6 = {
 			isa = PBXGroup;
 			children = (
+				8D8A0ACA2EDAC728002154CC /* week7 */,
 				8D3B10FD2ED172B3009357A6 /* SwiftUi_Tutorial */,
 				8D3B10FC2ED172B3009357A6 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8D3B10FD2ED172B3009357A6 /* SwiftUi_Tutorial */,
+				8D8A0ACA2EDAC728002154CC /* week7 */,
 			);
 			name = SwiftUi_Tutorial;
 			packageProductDependencies = (
