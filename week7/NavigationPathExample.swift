@@ -44,7 +44,3 @@ struct StepView: View {
         }
     }
 }
-
-#Preview {
-    NavigationPathExample()
-}

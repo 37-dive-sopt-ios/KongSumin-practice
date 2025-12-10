@@ -44,7 +44,3 @@ struct ColorDetail2: View {
         color.navigationTitle(color.description)
     }
 }
-
-#Preview {
-    DestinationView2()
-}

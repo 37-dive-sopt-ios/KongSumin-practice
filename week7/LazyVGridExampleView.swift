@@ -35,6 +35,3 @@ struct LazyVGridExampleView: View {
     }
 }
 
-#Preview {
-    LazyVGridExampleView()
-}
