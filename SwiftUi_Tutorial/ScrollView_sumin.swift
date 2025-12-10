@@ -48,11 +48,11 @@ struct ScrollView_sumin: View {
         HStack {
             Text("iOS")
                 .font(.subheadline)
-            Text("이명진")
+            Text("공수민")
                 .font(.headline)
                 .foregroundStyle(.blue)
             Spacer()
-            Text("파트장")
+            Text("Kong숨니ㅋㅋ")
                 .foregroundStyle(.gray)
                 .font(.subheadline)
         }
@@ -61,17 +61,17 @@ struct ScrollView_sumin: View {
 
     private var ageAndMBTI: some View {
         HStack {
-            Text("97년생")
+            Text("01년생")
                 .font(.subheadline)
             Spacer()
-            Text("ESTP거나 ESTJ")
+            Text("ISFJ")
                 .font(.subheadline)
                 .foregroundStyle(.indigo)
         }
     }
 
     private var hobby: some View {
-        Text("취미는 영상편집, 러닝, 카공 등")
+        Text("취미는 운동, 카공 등 요즘 회, 초밥 먹고시퍼요")
     }
 
     private var directMessageButton: some View {
